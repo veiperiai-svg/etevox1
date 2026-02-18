@@ -33,7 +33,7 @@ const Navbar = () => {
         <button onClick={() => handleClick("#home")} className="flex items-center gap-3">
           <img src={logo} alt="EtecApp Media" className="h-7 w-auto" />
           <span className="font-heading text-base font-semibold tracking-wide text-foreground">
-            EtecApp Media
+            EtecApp <span className="gradient-text">Media</span>
           </span>
         </button>
 
