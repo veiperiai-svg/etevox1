@@ -37,21 +37,22 @@ const Navbar = () => {
           <img src={logo} alt="EtecApp Media" className="h-8 w-auto" />
         </button>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <button
-                onClick={() => handleClick(item.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <button
+                  onClick={() => handleClick(item.href)}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        <div className="flex items-center gap-4">
           <LangSwitcher />
+
           <button
             className="md:hidden text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
