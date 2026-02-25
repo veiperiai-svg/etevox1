@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.svg";
-
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-];
+import LangSwitcher from "@/components/LangSwitcher";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navItems = [
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -31,10 +34,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6">
         <button onClick={() => handleClick("#home")} className="flex items-center gap-3">
-          <img src={logo} alt="EtecApp Media" className="h-7 w-auto" />
-          <span className="font-heading text-base font-semibold tracking-wide text-foreground">
-            EtecApp <span className="gradient-text">Media</span>
-          </span>
+          <img src={logo} alt="EtecApp Media" className="h-8 w-auto" />
         </button>
 
         <ul className="hidden md:flex items-center gap-8">
@@ -50,15 +50,18 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {mobileOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
-          </svg>
-        </button>
+        <div className="flex items-center gap-4">
+          <LangSwitcher />
+          <button
+            className="md:hidden text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {mobileOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
