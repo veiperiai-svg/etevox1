@@ -1,18 +1,21 @@
 import { Palette, Layout, RefreshCw, Gauge } from "lucide-react";
-
-const services = [
-  { icon: Palette, title: "Web Design", desc: "Stunning, custom designs that reflect your brand identity." },
-  { icon: Layout, title: "Front-End Development", desc: "Responsive, fast & interactive websites built with modern tech." },
-  { icon: RefreshCw, title: "Website Redesign", desc: "Transform your outdated site into a modern digital experience." },
-  { icon: Gauge, title: "Performance Optimization", desc: "Speed up your site for better UX and search rankings." },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    { icon: Palette, title: t.services.webDesign, desc: t.services.webDesignDesc },
+    { icon: Layout, title: t.services.frontEnd, desc: t.services.frontEndDesc },
+    { icon: RefreshCw, title: t.services.redesign, desc: t.services.redesignDesc },
+    { icon: Gauge, title: t.services.performance, desc: t.services.performanceDesc },
+  ];
+
   return (
     <section id="services" className="py-24">
       <div className="container mx-auto px-6">
         <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight">
-          Our <span className="text-primary">Services</span>
+          {t.services.title} <span className="text-primary">{t.services.titleAccent}</span>
         </h2>
         <div className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full" />
 

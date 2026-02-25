@@ -1,6 +1,9 @@
 import bgAbstract from "@/assets/bg-abstract.jpg";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -18,20 +21,20 @@ const HeroSection = () => {
             EtecApp <span className="gradient-text">Media</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
-            Crafting fast, modern & visually compelling digital experiences
+            {t.hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => scrollTo("#projects")}
               className="px-8 py-3 rounded-xl bg-primary text-primary-foreground font-heading text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity duration-200"
             >
-              View Projects
+              {t.hero.viewProjects}
             </button>
             <button
               onClick={() => scrollTo("#contact")}
               className="px-8 py-3 rounded-xl border border-border text-foreground font-heading text-sm font-semibold tracking-wide hover:bg-secondary transition-colors duration-200"
             >
-              Get in Touch
+              {t.hero.getInTouch}
             </button>
           </div>
         </div>

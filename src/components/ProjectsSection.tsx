@@ -1,20 +1,23 @@
 import { ExternalLink } from "lucide-react";
-
-const projects = [
-  {
-    title: "CS2 Tools",
-    description: "A utility toolkit for Counter-Strike 2 players with advanced features and clean UI.",
-    url: "https://cs2tools.netlify.app",
-    tags: ["React", "Netlify", "Game Tools"],
-  },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const ProjectsSection = () => {
+  const { t } = useLanguage();
+
+  const projects = [
+    {
+      title: "CS2 Tools",
+      description: t.projects.cs2tools,
+      url: "https://cs2tools.netlify.app",
+      tags: ["React", "Netlify", "Game Tools"],
+    },
+  ];
+
   return (
     <section id="projects" className="py-24">
       <div className="container mx-auto px-6">
         <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight">
-          Our <span className="text-primary">Projects</span>
+          {t.projects.title} <span className="text-primary">{t.projects.titleAccent}</span>
         </h2>
         <div className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full" />
 
