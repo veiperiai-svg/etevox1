@@ -24,6 +24,8 @@ const flags = {
   ),
 };
 
+const langLabels = { en: "English", lt: "Lietuvių" };
+
 const LangSwitcher = () => {
   const { lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
@@ -37,27 +39,33 @@ const LangSwitcher = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const otherLang = lang === "en" ? "lt" : "en";
+  const langs: Array<"en" | "lt"> = ["en", "lt"];
 
   return (
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-8 h-5.5 rounded-sm overflow-hidden border border-border hover:border-primary/40 transition-all duration-200"
+        className="flex items-center gap-2 px-2 py-1 rounded-md hover:bg-secondary transition-colors duration-200"
         aria-label="Change language"
       >
-        {flags[lang]}
+        <span className="w-6 h-4 rounded-sm overflow-hidden shrink-0">{flags[lang]}</span>
+        <span className="text-xs font-medium text-muted-foreground hidden sm:inline">{langLabels[lang]}</span>
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 z-50 bg-card border border-border rounded-lg shadow-lg p-1.5 min-w-[3rem]">
-          <button
-            onClick={() => { setLang(otherLang); setOpen(false); }}
-            className="w-8 h-5.5 rounded-sm overflow-hidden border border-border hover:border-primary/40 transition-all duration-200"
-            aria-label={otherLang === "en" ? "English" : "Lietuvių"}
-          >
-            {flags[otherLang]}
-          </button>
+        <div className="absolute right-0 top-full mt-2 z-50 bg-card border border-border rounded-xl shadow-lg p-1 min-w-[10rem]">
+          {langs.map((l) => (
+            <button
+              key={l}
+              onClick={() => { setLang(l); setOpen(false); }}
+              className={`flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm transition-colors duration-200 ${
+                l === lang ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+              }`}
+            >
+              <span className="w-6 h-4 rounded-sm overflow-hidden shrink-0">{flags[l]}</span>
+              <span className="font-medium">{langLabels[l]}</span>
+            </button>
+          ))}
         </div>
       )}
     </div>
