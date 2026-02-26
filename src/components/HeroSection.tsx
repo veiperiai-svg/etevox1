@@ -1,5 +1,6 @@
 import bgAbstract from "@/assets/bg-abstract.jpg";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -16,14 +17,23 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <div className="animate-fade-in-up">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-6">
-            EtecApp <span className="gradient-text font-['Syne'] font-extrabold italic">Media</span>
+            EtecApp <span className="gradient-text font-['Special_Elite'] text-[1.1em]">Media</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
             {t.hero.subtitle}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <button
               onClick={() => scrollTo("#projects")}
               className="px-8 py-3 rounded-xl bg-primary text-primary-foreground font-heading text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity duration-200"
@@ -36,8 +46,8 @@ const HeroSection = () => {
             >
               {t.hero.getInTouch}
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

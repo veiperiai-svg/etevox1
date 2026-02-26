@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -15,13 +16,31 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight">
+        <motion.h2
+          className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+        >
           {t.contact.title} <span className="text-primary">{t.contact.titleAccent}</span>
-        </h2>
-        <div className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full" />
+        </motion.h2>
+        <motion.div
+          className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="flex flex-col justify-center gap-8">
+          <motion.div
+            className="flex flex-col justify-center gap-8"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="text-lg text-muted-foreground leading-relaxed">
               {t.contact.subtitle}
             </p>
@@ -43,9 +62,16 @@ const ContactSection = () => {
                 <p className="text-foreground">{t.contact.locationValue}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 flex flex-col gap-5">
+          <motion.form
+            onSubmit={handleSubmit}
+            className="glass rounded-2xl p-8 flex flex-col gap-5"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <div>
               <label className="text-xs text-muted-foreground uppercase tracking-wide block mb-2">{t.contact.name}</label>
               <input
@@ -80,7 +106,7 @@ const ContactSection = () => {
               <Send className="w-4 h-4" />
               {submitted ? t.contact.sent : t.contact.send}
             </button>
-          </form>
+          </motion.form>
         </div>
       </div>
     </section>

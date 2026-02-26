@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motion } from "framer-motion";
 
 const ProjectsSection = () => {
   const { t } = useLanguage();
@@ -16,19 +17,35 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24">
       <div className="container mx-auto px-6">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight">
+        <motion.h2
+          className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+        >
           {t.projects.title} <span className="text-primary">{t.projects.titleAccent}</span>
-        </h2>
-        <div className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full" />
+        </motion.h2>
+        <motion.div
+          className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {projects.map((project) => (
-            <a
+          {projects.map((project, i) => (
+            <motion.a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
               className="glass rounded-2xl p-8 group hover:border-primary/20 transition-colors duration-200 block"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="font-heading text-lg font-bold text-foreground group-hover:text-primary transition-colors">
@@ -46,7 +63,7 @@ const ProjectsSection = () => {
                   </span>
                 ))}
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
