@@ -23,7 +23,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}>
 
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-6">
-            <span className="gradient-text font-black font-['Unbounded'] tracking-wide">Etevox</span> <span className="font-light text-foreground">|</span> <span className="font-['Caveat'] font-bold text-foreground italic">Media</span>
+            <span className="gradient-text font-black font-['Outfit'] tracking-wide">Etevox</span> <span className="font-light text-foreground">|</span> <span className="font-['Caveat'] font-bold text-foreground italic">Media</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
             {t.hero.subtitle}
