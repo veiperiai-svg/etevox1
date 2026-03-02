@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import logo from "@/assets/logo.svg";
 import LangSwitcher from "@/components/LangSwitcher";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -10,8 +9,9 @@ const Navbar = () => {
 
   const navItems = [
     { label: t.nav.about, href: "#about" },
-    { label: t.nav.projects, href: "#projects" },
     { label: t.nav.services, href: "#services" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.process, href: "#process" },
     { label: t.nav.contact, href: "#contact" },
   ];
 
@@ -29,12 +29,16 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-3" : "py-5"
+        scrolled
+          ? "bg-background/80 backdrop-blur-xl border-b border-border py-3 shadow-sm"
+          : "py-5"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <button onClick={() => handleClick("#home")} className="flex items-center gap-3">
-          <img src={logo} alt="EtecApp Media" className="h-8 w-auto" />
+        <button onClick={() => handleClick("#home")} className="flex items-center gap-2">
+          <span className="gradient-text font-['Outfit'] font-black text-xl tracking-wide">Etevox</span>
+          <span className="text-muted-foreground font-light">|</span>
+          <span className="font-['Caveat'] font-bold text-foreground text-lg">Media</span>
         </button>
 
         <div className="flex items-center gap-8">
@@ -43,7 +47,7 @@ const Navbar = () => {
               <li key={item.href}>
                 <button
                   onClick={() => handleClick(item.href)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
                   {item.label}
                 </button>
@@ -66,13 +70,13 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden glass mt-2 mx-4 rounded-xl p-4">
+        <div className="md:hidden bg-background border-b border-border mt-2 mx-4 rounded-xl p-4 shadow-lg">
           <ul className="flex flex-col gap-4">
             {navItems.map((item) => (
               <li key={item.href}>
                 <button
                   onClick={() => handleClick(item.href)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors w-full text-left"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors w-full text-left"
                 >
                   {item.label}
                 </button>

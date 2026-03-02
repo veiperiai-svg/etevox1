@@ -1,4 +1,4 @@
-import { Palette, Layout, RefreshCw, Gauge } from "lucide-react";
+import { Code, Palette, Gauge, Monitor } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 
@@ -15,47 +15,43 @@ const ServicesSection = () => {
   const { t } = useLanguage();
 
   const services = [
+    { icon: Code, title: t.services.frontEnd, desc: t.services.frontEndDesc },
     { icon: Palette, title: t.services.webDesign, desc: t.services.webDesignDesc },
-    { icon: Layout, title: t.services.frontEnd, desc: t.services.frontEndDesc },
-    { icon: RefreshCw, title: t.services.redesign, desc: t.services.redesignDesc },
     { icon: Gauge, title: t.services.performance, desc: t.services.performanceDesc },
+    { icon: Monitor, title: t.services.redesign, desc: t.services.redesignDesc },
   ];
 
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="py-32 bg-secondary">
       <div className="container mx-auto px-6">
-        <motion.h2
-          className="font-heading text-3xl md:text-4xl font-bold text-center mb-2 tracking-tight"
+        <motion.div
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          {t.services.title} <span className="text-primary">{t.services.titleAccent}</span>
-        </motion.h2>
-        <motion.div
-          className="w-12 h-0.5 bg-primary/40 mx-auto mb-14 rounded-full"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        />
+          <p className="text-sm font-medium text-primary tracking-widest uppercase mb-4">{t.services.label}</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold tracking-tight">
+            {t.services.title}
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {services.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
-              className="glass rounded-xl p-8 hover:border-primary/20 transition-colors duration-200"
+              className="bg-card rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-border"
               custom={i}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={fadeUp}
             >
-              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                <Icon className="w-5 h-5 text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                <Icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-heading text-base font-semibold mb-2">{title}</h3>
+              <h3 className="font-heading text-lg font-semibold mb-3">{title}</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">{desc}</p>
             </motion.div>
           ))}
