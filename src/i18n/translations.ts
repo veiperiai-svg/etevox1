@@ -3,7 +3,7 @@ export type Lang = "en" | "lt";
 export const translations = {
   en: {
     nav: {
-      about: "About",
+      
       projects: "Work",
       services: "Services",
       contact: "Contact",
@@ -94,7 +94,7 @@ export const translations = {
   },
   lt: {
     nav: {
-      about: "Apie mus",
+      
       projects: "Darbai",
       services: "Paslaugos",
       contact: "Kontaktai",

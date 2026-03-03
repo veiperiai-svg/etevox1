@@ -4,7 +4,7 @@ const Footer = () => {
   const { t } = useLanguage();
 
   const links = [
-    { label: t.nav.about, href: "#about" },
+    
     { label: t.nav.services, href: "#services" },
     { label: t.nav.projects, href: "#projects" },
     { label: t.nav.contact, href: "#contact" },
