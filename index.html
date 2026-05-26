@@ -2,25 +2,78 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Etevox Media</title>
-    <meta name="description" content="Etevox delivers modern web experiences through clean design, interactive interfaces, and high-performance development. Built with a focus on usability, scalability, and innovation, the platform showcases creative digital solutions crafted for the modern web." />
-    <meta name="Etevox" content="website" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Etevox Media" />
-    <meta property="og:description" content="Etevox delivers modern web experiences through clean design, interactive interfaces, and high-performance development. Built with a focus on usability, scalability, and innovation, the platform showcases creative digital solutions crafted for the modern web." />
+    <!-- SEO TITLE -->
+    <title>Etevox Media | Modern Web Development & Digital Experiences</title>
+
+    <meta
+      name="description"
+      content="Etevox Media builds modern, fast and interactive web experiences using React, TypeScript and modern frontend technologies."
+    />
+
+    <meta
+      name="keywords"
+      content="web development, frontend, React, TypeScript, UI/UX, modern websites, Etevox Media"
+    />
+
+    <meta name="author" content="Etevox Media" />
+
+    <!-- Indexing -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://etevox.netlify.app/" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Etevox Media | Modern Web Development" />
+
+    <meta
+      property="og:description"
+      content="Modern web development and digital experiences built with React and TypeScript."
+    />
+
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="-" />
 
+    <meta property="og:url" content="https://etevox.netlify.app/" />
+
+    <meta
+      property="og:image"
+      content="https://etevox.netlify.app/og-image.jpg"
+    />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="-" />
-    <meta name="twitter:image" content="-" />
+
+    <meta name="twitter:title" content="Etevox Media" />
+
+    <meta
+      name="twitter:description"
+      content="Modern web experiences built with React and TypeScript."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://etevox.netlify.app/og-image.jpg"
+    />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#000000" />
   </head>
 
   <body>
+    <!-- SEO fallback (labai svarbu SPA) -->
+    <noscript>
+      Etevox Media builds modern web experiences using React and TypeScript.
+    </noscript>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
