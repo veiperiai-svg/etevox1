@@ -48,7 +48,7 @@ export const translations = {
       status: {
         fullyReleased: "Fully Released",
         released: "Released",
-        construction: "Under Construction",
+        construction: "In Development",
         beta: "Experimental / Beta",
         discontinued: "Discontinued",
       },
