@@ -48,8 +48,17 @@
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 
   * {
@@ -67,7 +76,7 @@
 
 @layer utilities {
   .gradient-text {
-   background: linear-gradient(135deg, hsl(193 100% 50%), hsl(125 98% 78%));
+    background: linear-gradient(135deg, hsl(193 100% 50%), hsl(125 98% 78%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
