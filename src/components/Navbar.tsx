@@ -40,7 +40,7 @@ const Navbar = () => {
         <button onClick={() => handleClick("#home")} className="flex items-center gap-2.5 group">
           <span className="w-1.5 h-1.5 rounded-full accent-dot" />
           <span className="font-heading font-semibold text-sm tracking-tight text-foreground">
-            Etevox<span className="text-muted-foreground font-normal">/Media</span>
+            Etevox<span className="text-muted-foreground font-normal">Media</span>
           </span>
         </button>
 
