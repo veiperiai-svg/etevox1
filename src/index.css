@@ -69,7 +69,7 @@
 
 @layer utilities {
   .text-outline {
-    -webkit-text-stroke: 1px #FF10F0;
+    -webkit-text-stroke: 1px hsl(var(--foreground) / 0.35);
     color: transparent;
   }
   .text-outline-muted {
