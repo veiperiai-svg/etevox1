@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-20">
           <div className="md:col-span-6">
             <h3 className="font-heading text-5xl md:text-7xl font-medium tracking-tighter leading-[0.95]">
-              Etevox<span className="text-outline">Media</span>
+              Etevox<span className="text-outline">/Media</span>
             </h3>
           </div>
           <div className="md:col-span-3">
