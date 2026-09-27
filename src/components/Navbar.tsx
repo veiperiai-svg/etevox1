@@ -29,13 +29,35 @@ const Navbar = () => {
 
   const handleClick = (href: string) => {
     setMobileOpen(false);
+    
+    // Jei spaudžiama ant #home ir tokio elemento nėra, slenkame į viršų
+    if (href === "#home") {
+      const lenis = getLenis();
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.4 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
     const target = document.querySelector(href) as HTMLElement | null;
     if (!target) return;
-    const lenis = getLenis();
-    if (lenis) lenis.scrollTo(target, { offset: -80, duration: 1.4 });
-    else target.scrollIntoView({ behavior: "smooth" });
-  };
 
+    const lenis = getLenis();
+    if (lenis) {
+      // Priverstinai perrenkame puslapio matmenis prieš sklandų slinkimą
+      lenis.resize(); 
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+    } else {
+      // Jei Lenis dar nepasiruošęs, naudojame rankinį sklandų slinkimą
+      const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - 80,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <nav
@@ -52,7 +74,6 @@ const Navbar = () => {
         </button>
 
         <NavItems items={navItems} activeHref={activeHref} onSelect={handleClick} />
-
 
         <div className="flex items-center gap-4">
           <LangSwitcher />

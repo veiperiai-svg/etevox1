@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
-import "lenis/dist/lenis.css"; // BŪTINA produkcinei versijai internete
+import "lenis/dist/lenis.css";
 
 let lenisInstance: Lenis | null = null;
 
@@ -8,7 +8,6 @@ export const getLenis = () => lenisInstance;
 
 export const useLenis = () => {
   useEffect(() => {
-    // Jei instancija jau egzistuoja, saugiai ją išvalome
     if (lenisInstance) {
       lenisInstance.destroy();
     }
@@ -19,6 +18,8 @@ export const useLenis = () => {
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
+      // Neleidžia operacinei sistemai išjungti smooth scroll
+      prevent: () => false,
     });
 
     lenisInstance = lenis;
