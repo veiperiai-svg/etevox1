@@ -12,13 +12,10 @@ const HeroSection = () => {
 
     const lenis = getLenis();
     if (lenis) {
-      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+      lenis.scrollTo(target, { offset: -50, duration: 1.2 });
     } else {
-      const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - 80,
-        behavior: "smooth",
-      });
+      const topPos = target.getBoundingClientRect().top + window.scrollY - 50;
+      window.scrollTo({ top: topPos, behavior: "smooth" });
     }
   };
 
@@ -79,7 +76,7 @@ const HeroSection = () => {
           <div className="md:col-span-4 md:col-start-9 flex flex-col gap-3">
             <button
               onClick={() => scrollTo("#projects")}
-              className="group flex items-center justify-between border-t border-border pt-4 hover:border-primary transition-colors duration-500"
+              className="group flex items-center justify-between border-t border-border pt-4 hover:border-primary transition-colors duration-500 cursor-pointer"
             >
               <span className="text-sm uppercase tracking-[0.18em] text-foreground group-hover:text-primary transition-colors">
                 {t.hero.viewProjects}
@@ -88,7 +85,7 @@ const HeroSection = () => {
             </button>
             <button
               onClick={() => scrollTo("#contact")}
-              className="group flex items-center justify-between border-t border-border pt-4 hover:border-primary transition-colors duration-500"
+              className="group flex items-center justify-between border-t border-border pt-4 hover:border-primary transition-colors duration-500 cursor-pointer"
             >
               <span className="text-sm uppercase tracking-[0.18em] text-muted-foreground group-hover:text-primary transition-colors">
                 {t.hero.getInTouch}
