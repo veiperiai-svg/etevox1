@@ -1,21 +1,35 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { getLenis } from "@/hooks/useLenis";
 
 const HeroSection = () => {
   const { t } = useLanguage();
 
   const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+    const target = document.querySelector(id) as HTMLElement | null;
+    if (!target) return;
+
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+    } else {
+      const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - 80,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-end overflow-hidden pt-32 pb-16"
+      className="relative min-h-screen flex items-end pt-32 pb-16"
     >
       {/* Grid lines */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none overflow-hidden"
         style={{
           backgroundImage:
             "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",

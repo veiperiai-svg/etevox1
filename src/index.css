@@ -4,6 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Išjungiame gimtąjį smooth scroll, nes Lenis pats valdo animaciją */
+html {
+  scroll-behavior: auto !important;
+}
+
+/* Suteikiame Lenis pilną kontrolę aukščiui */
+html.lenis, html.lenis body {
+  height: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 2%;
